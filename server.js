@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { createCanvas } from "canvas";
+//import { createCanvas } from "canvas";
 
 const app = express();
 app.use(express.json());
@@ -30,8 +30,6 @@ const db = await mysql.createPool({
 // -----------------
 // Helpers
 // -----------------
-async function generateSummaryImage(countries, lastRefreshedAt) {
-    const total = countries.length;
     // Sort by estimated_gdp, treating nulls/undefined values as 0 for sorting
     const top5 = [...countries]
         .sort((a, b) => (b.estimated_gdp || 0) - (a.estimated_gdp || 0))
@@ -140,7 +138,7 @@ app.post("/countries/refresh", async (req, res) => {
         }
         
         // Image Generation
-        await generateSummaryImage(processedCountries, refreshTime);
+        
 
         return res.json({
             message: "✅ Countries refreshed successfully!",
@@ -291,7 +289,7 @@ app.get("/countries/image", (req, res) => {
             res.setHeader("Content-Type", "image/png");
             return res.sendFile(imagePath);
         } else {
-            return res.status(404).json({ error: "Summary image not found" });
+            return res.status(404).json({ error: "Summary image not generated or found" });
         }
     } catch (err) {
         console.error("❌ Error serving image:", err);
@@ -308,4 +306,8 @@ app.use((req, res) => {
 // Start server
 // -----------------
 const PORT = process.env.PORT || 3000;
+<<<<<<< HEAD
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+=======
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+>>>>>>> fb7a125e7e4dac925099bb196b95cde774c82c93

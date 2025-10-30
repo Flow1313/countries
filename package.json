@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "axios": "^1.13.1",
+<<<<<<< HEAD
     "canvas": "^3.2.0",
+=======
+>>>>>>> c8f9d459fc540cb23c64116e387a6b7d312fd26a
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.21.2",

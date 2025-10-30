@@ -4,7 +4,11 @@ import fetch from "node-fetch";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+<<<<<<< HEAD
 import { createCanvas } from "canvas";
+=======
+//import { createCanvas } from "canvas";
+>>>>>>> c8f9d459fc540cb23c64116e387a6b7d312fd26a
 
 const app = express();
 app.use(express.json());
@@ -30,8 +34,11 @@ const db = await mysql.createPool({
 // -----------------
 // Helpers
 // -----------------
+<<<<<<< HEAD
 async function generateSummaryImage(countries, lastRefreshedAt) {
     const total = countries.length;
+=======
+>>>>>>> c8f9d459fc540cb23c64116e387a6b7d312fd26a
     // Sort by estimated_gdp, treating nulls/undefined values as 0 for sorting
     const top5 = [...countries]
         .sort((a, b) => (b.estimated_gdp || 0) - (a.estimated_gdp || 0))
@@ -140,7 +147,11 @@ app.post("/countries/refresh", async (req, res) => {
         }
         
         // Image Generation
+<<<<<<< HEAD
         await generateSummaryImage(processedCountries, refreshTime);
+=======
+        
+>>>>>>> c8f9d459fc540cb23c64116e387a6b7d312fd26a
 
         return res.json({
             message: "✅ Countries refreshed successfully!",
@@ -291,7 +302,11 @@ app.get("/countries/image", (req, res) => {
             res.setHeader("Content-Type", "image/png");
             return res.sendFile(imagePath);
         } else {
+<<<<<<< HEAD
             return res.status(404).json({ error: "Summary image not found" });
+=======
+            return res.status(404).json({ error: "Summary image not generated or found" });
+>>>>>>> c8f9d459fc540cb23c64116e387a6b7d312fd26a
         }
     } catch (err) {
         console.error("❌ Error serving image:", err);
@@ -308,4 +323,12 @@ app.use((req, res) => {
 // Start server
 // -----------------
 const PORT = process.env.PORT || 3000;
+<<<<<<< HEAD
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+=======
+<<<<<<< HEAD
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+=======
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+>>>>>>> fb7a125e7e4dac925099bb196b95cde774c82c93
+>>>>>>> c8f9d459fc540cb23c64116e387a6b7d312fd26a

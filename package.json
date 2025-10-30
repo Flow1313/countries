@@ -9,7 +9,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^4.19.2",
+    "jimp": "^0.22.12",
     "mysql2": "^3.9.7",
     "node-fetch": "^3.3.2"
   }
